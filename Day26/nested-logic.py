@@ -3,13 +3,14 @@ from datetime import date
 def fine(due, ret):
     fine = 0
 
-    if due.year == ret.year:
-        if due.month == ret.month:
-            fine = 15 * (ret.day - due.day)
+    if ret > due:
+        if due.year == ret.year:
+            if due.month == ret.month:
+                fine = 15 * (ret.day - due.day)
+            else:
+                fine = 500 * (ret.month - due.month)
         else:
-            fine = 500 * (ret.month - due.month)
-    else:
-        fine = 10000
+            fine = 10000
 
     return fine
 
